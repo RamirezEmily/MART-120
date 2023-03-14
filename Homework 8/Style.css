@@ -1,0 +1,13 @@
+body {
+    margin: -50px;
+}
+
+.imageClass {
+    position: relative;
+    background-color: rgb(31, 27, 83);
+    background-image: url("BACKGGG-small.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+}
