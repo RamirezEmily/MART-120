@@ -41,14 +41,61 @@ function setup()
   //Call CreateBoarders function
   CreateBorders(10);
 
+  //Call Character Movement Keys
+  createCharacterMovement();
+
   //call CreateExit
   CreateExit();
   
+  //Call Create MC
+  createMainCharacter();
 
+  //Call Enemy 1
+  createEnemy1();
+
+  //Call Enemy 1 Movement
+  createEnemy1Movement();
+
+  //call Enemy 2
+  createEnemy2();
+
+  //Call Enemy 2 Movement
+  createEnemy2Movement();
+
+  //Call Exit Message
+  createWinningMessage();
+
+  //Call MouseShape
+  createMouseShape();
+
+}
+
+//Creating Functions
+function CreateBorders(thickness)
+{
+  //top border
+  fill(72,209,204);
+  rect(0,0,width,thickness);
+  //left border
+  fill(72,209,204);
+  rect(0,0,thickness,height);
+  //bottom
+  fill(72,209,204);
+  rect(0,height-thickness,width,thickness);
+  //upper right
+  fill(72,209,204);
+  rect(width-thickness,0,thickness,height-45);
+}
+
+function createMainCharacter()
+{
   //Main Character
   fill(0,206,209);
-  circle(characterX,characterY,30);
+  circle(characterX,characterY,30)
+}
 
+function createCharacterMovement()
+{
   //keys
   if(keyIsDown(w))
   {
@@ -66,11 +113,24 @@ function setup()
   {
     characterX += 5;
   }
+}
 
+function createEnemy1()
+{
   //Enemy 1
   fill(255,17,0);
   square(enemy1X, enemy1Y,25);
+}
 
+function createEnemy2()
+{
+  //Enemy 2
+  fill(119,21,21);
+  square(enemy2X, enemy2Y,35);
+}
+
+function createEnemy1Movement()
+{
   //Random Speed Enemy 1
   shapeXSpeed1 = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
   shapeYSpeed1 = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
@@ -95,16 +155,16 @@ function setup()
   {
       enemy1Y = height;
   }
+  
+}
 
-  //Enemy 2
-  fill(119,21,21);
-  square(enemy2X, enemy2Y,35);
-
+function createEnemy2Movement()
+{
   //Random Speed Enemy 2
   shapeXSpeed2 = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
   shapeYSpeed2 = Math.floor(Math.random() * (Math.floor(Math.random() * 5)) + 1);
 
-  //move enemy 1
+  //move enemy 2
   enemy2X += shapeXSpeed2;
   enemy2Y += shapeYSpeed2;
   // check for shape out of bounds
@@ -124,7 +184,18 @@ function setup()
   {
       enemy2Y = height;
   }
+}
 
+function CreateExit()
+{
+  //exit sign
+  textSize(15);
+  text("EXIT", width-50,height-50)
+}
+
+//exit Message
+function createWinningMessage()
+{
   //If MC reaches exit
   if(characterX > width && characterY > width-50)
   {
@@ -133,32 +204,13 @@ function setup()
     textSize(30);
     text("!!You Escaped!!",width/2-50,height/2-65);
   }
+}
 
+function createMouseShape()
+{
   //Mouse Click Shape
   fill(120,130,140);
   circle(mouseShapex,mouseShapey,15);
-}
-
-function CreateBorders(thickness)
-{
-  //top border
-  fill(72,209,204);
-  rect(0,0,width,thickness);
-  //left border
-  fill(72,209,204);
-  rect(0,0,thickness,height);
-  //bottom
-  fill(72,209,204);
-  rect(0,height-thickness,width,thickness);
-  //upper right
-  fill(72,209,204);
-  rect(width-thickness,0,thickness,height-45);
-}
-
-function CreateExit()
-{
-  textSize(15);
-  text("EXIT", width-50,height-50)
 }
 
 function mousePressed()
