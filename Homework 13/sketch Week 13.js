@@ -38,22 +38,12 @@ function setup()
   stroke(0);
   fill(24,200,29);
 
-  //border
-  fill(72,209,204);
-  rect(0,0,width,10);
-  //left border
-  fill(72,209,204);
-  rect(0,0,10,height);
-  //bottom
-  fill(72,209,204);
-  rect(0,height-10,width,10);
-  //upper right
-  fill(72,209,204);
-  rect(width-10,0,10,height-45);
+  //Call CreateBoarders function
+  CreateBorders(10);
 
-  //exit
-  textSize(15);
-  text("EXIT", width-50,height-50)
+  //call CreateExit
+  CreateExit();
+  
 
   //Main Character
   fill(0,206,209);
@@ -147,6 +137,28 @@ function setup()
   //Mouse Click Shape
   fill(120,130,140);
   circle(mouseShapex,mouseShapey,15);
+}
+
+function CreateBorders(thickness)
+{
+  //top border
+  fill(72,209,204);
+  rect(0,0,width,thickness);
+  //left border
+  fill(72,209,204);
+  rect(0,0,thickness,height);
+  //bottom
+  fill(72,209,204);
+  rect(0,height-thickness,width,thickness);
+  //upper right
+  fill(72,209,204);
+  rect(width-thickness,0,thickness,height-45);
+}
+
+function CreateExit()
+{
+  textSize(15);
+  text("EXIT", width-50,height-50)
 }
 
 function mousePressed()
